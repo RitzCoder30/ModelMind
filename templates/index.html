@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docubridge</title>
+</head>
+<body>
+  <h1>ModelMind</h1>
+  <p>Upload a financial model and ask questions about it</p>
+  <form method="POST" action="/upload" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".xlsx" required>
+    <input type="submit" value="Upload">
+    <br>
+    <input type="text" name="question" placeholder="Ask a question about the model" required>
+  </form>
+</body>
+
+  <style>
+    input[type="text"] {
+      width: 300px;   
+      padding: 6px;  
+      font-size: 16px;
+    }
+  </style>
+  
+</html>
