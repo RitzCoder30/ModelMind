@@ -42,12 +42,12 @@ def upload():
         answer = result[0]['generated_text'].split("<|assistant|>")[-1].strip()
 
         # Return result in HTML
-    return (
-        f"<h3>File: {uploaded_file.filename}</h3>"
-        f"<h4>Question: {question}</h4>"
-        f"<p><strong>Answer:</strong> {answer}</p>"
-        f"<h4>Data Preview:</h4>                                    {df.head().to_html(index=False)}"
-    )
+        return (
+            f"<h3>File: {uploaded_file.filename}</h3>"
+            f"<h4>Question: {question}</h4>"
+            f"<p><strong>Answer:</strong> {answer}</p>"
+            f"<h4>Data Preview:</h4>{df.head().to_html(index=False)}"
+        )
 
     except Exception as e:
         return f"Error processing file: {str(e)}", 500
