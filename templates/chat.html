@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ModelMind - Chat</title>
+</head>
+<body>
+  <h1>ModelMind</h1>
+
+  <h3>Answer:</h3>
+  <p>{{ answer }}</p>
+
+  {% if data_preview %}
+  <h4>Data Preview (first 5 rows):</h4>
+  <div>{{ data_preview | safe }}</div>
+  {% endif %}
+
+  <h4>Ask a follow-up question:</h4>
+  <form method="POST" action="/chat">
+    <input type="text" name="question" placeholder="Ask a follow-up question" required
+           style="width:300px; padding:6px; font-size:16px;">
+    <input type="submit" value="Ask">
+  </form>
+</body>
+</html>

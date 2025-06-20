@@ -11,6 +11,7 @@ gunicorn = "^21.2.0"
 openpyxl = "^3.1.5"
 pandas = "^2.3.0"
 transformers = "^4.52.4"
+huggingface-hub = "^0.33.0"
 
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md
