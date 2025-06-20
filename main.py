@@ -9,6 +9,9 @@ app.secret_key = "replace_with_your_secret_key"
 # Initialize LLaMA pipeline once (local or accessible without API key)
 pipe = pipeline("text-generation", model="TinyLlama/TinyLlama-1.1B-Chat-v1.0")
 
+# Basic errors for error checking
+errors = {"#DIV/0!", "#VALUE!", "#REF!", "#NAME?", "#NUM!", "#N/A", "#NULL!"}
+
 @app.route('/')
 def index():
     # Landing page with file upload and question form
@@ -32,11 +35,23 @@ def upload():
         return "No question provided", 400
 
     try:
-        # Read Excel file into DataFrame
+        # Read Excel file into DataFrame and a string only version for error checking
         df = pd.read_excel(uploaded_file)
+        df_string = pd.read_excel(uploaded_file, dtype=str)
 
-        # Create a summary string of the DataFrame
-        summary = df.describe(include='all').fillna("").to_string()
+        # Check for errors in each cell and format a list of erroneous cells
+        error_map = df_string.applymap(lambda cell : cell in errors).stack()
+        error_list = error_map[error_map].index.tolist()
+        cell_list = [error[1] + error[0] for error in error_list]
+
+        # Generates a note if there are errors in the sheet
+        if len(cell_list) > 0:
+            note = "\nNote: The spreadsheet contains errors in the following cells: " + ", ".join(cell_list)
+        else:
+            note = ""
+
+        # Create a summary string of the DataFrame and appends error note
+        summary = df.describe(include='all').fillna("").to_string() + note
 
         # Store summary and conversation history in session
         session['summary'] = summary
