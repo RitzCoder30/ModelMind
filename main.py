@@ -40,9 +40,9 @@ def upload():
         df_string = pd.read_excel(uploaded_file, dtype=str)
 
         # Check for errors in each cell and format a list of erroneous cells
-        error_map = df_string.applymap(lambda cell : cell in errors).stack()
-        error_list = error_map[error_map].index.tolist()
-        cell_list = [error[1] + error[0] for error in error_list]
+        error_map = df_string.apply(lambda column: column.map(lambda cell: cell in errors))
+        error_list = error_map[error_map].stack().index.tolist()
+        cell_list = [f'{error[1]}{error[0]}' for error in error_list]
 
         # Generates a note if there are errors in the sheet
         if len(cell_list) > 0:
