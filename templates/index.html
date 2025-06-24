@@ -2,20 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ModelMind - Upload & Ask</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f9;
+    }
+    h1 {
+      color: #333;
+      font-size: 2.5em;
+      text-align: center;
+    }
+    label {
+      font-size: 1.2em;
+      color: #555;
+    }
+    input[type="file"],
+    input[type="text"] {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #007BFF;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
 <body>
   <h1>ModelMind</h1>
 
-  <form method="POST" action="/upload" enctype="multipart/form-data">
-    <label for="file">Upload Excel file:</label><br>
-    <input type="file" id="file" name="file" accept=".xls,.xlsx" required><br><br>
+  <div class="form-container">
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+      <label for="file">Upload Excel file:</label><br>
+      <input type="file" id="file" name="file" accept=".xls,.xlsx" required><br><br>
 
-    <label for="question">Ask your first question:</label><br>
-    <input type="text" id="question" name="question" placeholder="Type your question here" required
-           style="width:300px; padding:6px; font-size:16px;"><br><br>
+      <label for="question">Ask your first question:</label><br>
+      <input type="text" id="question" name="question" placeholder="Type your question here" required><br><br>
 
-    <input type="submit" value="Submit">
-  </form>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
 </body>
 </html>
