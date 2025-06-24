@@ -2,23 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ModelMind - Chat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f9;
+    }
+    h1 {
+      color: #333;
+      font-size: 2.5em;
+      text-align: center;
+    }
+    h3, h4 {
+      color: #333;
+      font-size: 1.5em;
+    }
+    .answer-box {
+      background-color: #fff;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"] {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #007BFF;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .data-preview {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
   <h1>ModelMind</h1>
 
-  <h3>Answer:</h3>
-  <p>{{ answer }}</p>
+  <div class="answer-box">
+    <h3>Answer:</h3>
+    <p>{{ answer }}</p>
+  </div>
 
   {% if data_preview %}
-  <h4>Data Preview (first 5 rows):</h4>
-  <div>{{ data_preview | safe }}</div>
+  <div class="data-preview">
+    <h4>Data Preview (first 5 rows):</h4>
+    <div>{{ data_preview | safe }}</div>
+  </div>
   {% endif %}
 
   <h4>Ask a follow-up question:</h4>
   <form method="POST" action="/chat">
-    <input type="text" name="question" placeholder="Ask a follow-up question" required
-           style="width:300px; padding:6px; font-size:16px;">
+    <input type="text" name="question" placeholder="Ask a follow-up question" required>
     <input type="submit" value="Ask">
   </form>
 </body>
