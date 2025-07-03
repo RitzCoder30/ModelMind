@@ -609,7 +609,12 @@ def chat():
     try:
         # Re-read DataFrame and re-extract summaries on each chat request for robustness
         df = pd.read_excel(io.BytesIO(file_bytes), engine='openpyxl', header=[0, 1])
+
+        # Flatten MultiIndex columns to single strings
         df.columns = ['_'.join(filter(None, [str(i) for i in col])) for col in df.columns]
+
+        # Ensure column names are unique to avoid parsing issues
+        df.columns = pd.io.parsers.ParserBase({'names': df.columns})._maybe_dedup_names(df.columns)
 
         detailed_summaries = extract_detailed_summaries(df)
         summary = extract_financial_summary(df)  # Regenerate summary if needed for LLM
