@@ -18,10 +18,12 @@ This Flask application serves as an intelligent financial data assistant, allowi
 - CSS (Tailwind)
 - JavaScript
 
+---
+
 ### Optimized File
 You can download the file used [here](https://github.com/MilanSuri/ModelMind/blob/main/Docubridge%20Internship%20Sample%20Sheet%201.xlsx).
 
-###Questions for LLM
+### Questions for LLM
 - What is the total revenue for the company?
 - How much revenue did the R&D department generate?
 - What is the total cost of goods sold (COGS) for the company?
