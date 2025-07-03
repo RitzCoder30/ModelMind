@@ -7,6 +7,8 @@ This Flask application serves as an intelligent financial data assistant, allowi
 - Automated Data Extraction: Automatically extracts key financial figures like Revenue, Cost of Goods Sold, Gross Profit, Operating Expenses, Operating Profit, and Net Income.
 - Question Answering: Uses Flan-T5-Small model for answering questions based on the parsed document.
 
+---
+
 ### Technologies Used:
 - Flask
 - Pandas
