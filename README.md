@@ -2,6 +2,10 @@
 
 This Flask application serves as an intelligent financial data assistant, allowing users to upload Excel files containing financial data and then ask questions about that data. It leverages a pre-trained language model (FLAN-T5-Small) for natural language understanding and generation, along with a custom data extraction and query engine for accurate financial calculations.
 
+### Why it matters: 
+
+ModelMind helps financial analysts and business users quickly gain insights from complex spreadsheets without manual number crunching — saving time, reducing errors, and making financial data more accessible through natural language questions.
+
 ### Features:
 - Excel File Upload: Easily upload your financial data in .xlsx format.
 - Automated Data Extraction: Automatically extracts key financial figures like Revenue, Cost of Goods Sold, Gross Profit, Operating Expenses, Operating Profit, and Net Income.
